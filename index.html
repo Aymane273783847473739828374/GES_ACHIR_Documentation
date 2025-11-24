@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>GES_ACHIR – Documentation du projet</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        /* ---- CSS SUPER SIMPLE ---- */
+
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 15px;
+            margin: 20px auto;
+            max-width: 900px;
+            line-height: 1.5;
+            color: #222;
+        }
+
+        h1, h2, h3 {
+            font-weight: bold;
+        }
+
+        h1 {
+            font-size: 26px;
+            text-align: center;
+            margin-bottom: 5px;
+        }
+
+        h2 {
+            font-size: 20px;
+            border-bottom: 1px solid #aaa;
+            padding-bottom: 4px;
+            margin-top: 28px;
+        }
+
+        h3 {
+            font-size: 17px;
+            margin-top: 18px;
+        }
+
+        section {
+            margin-bottom: 25px;
+        }
+
+        ul {
+            margin-top: 6px;
+            margin-bottom: 10px;
+        }
+
+        code {
+            background: #f2f2f2;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-size: 14px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+        }
+
+        th, td {
+            border: 1px solid #aaa;
+            padding: 8px;
+            font-size: 14px;
+        }
+
+        th {
+            background: #e8e8e8;
+            font-weight: bold;
+            text-align: left;
+        }
+
+        .small-text {
+            color: #555;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>GES_ACHIR – Système de Gestion de Stock</h1>
+<p class="small-text" style="text-align:center;">Travail de fin d'études – Développement Web</p>
+
+<section id="intro">
+    <h2>1. Présentation du projet & objectifs</h2>
+
+    <h3>Contexte</h3>
+    <p>
+        De nombreuses petites structures gèrent encore leurs stocks dans des fichiers Excel, des carnets ou de simples
+        tableaux approximatifs. Les conséquences sont fréquentes : erreurs d'inventaire, commandes mal anticipées, mauvaise
+        visibilité sur le chiffre d'affaires et perte de temps au quotidien.
+    </p>
+    <p>
+        <strong>GES_ACHIR</strong> est une application web interne dont l'objectif est de centraliser la gestion des articles,
+        des ventes, des commandes fournisseurs, des clients et des catégories dans une seule interface.
+    </p>
+
+    <h3>Objectifs principaux</h3>
+    <ul>
+        <li>Automatiser le suivi du stock.</li>
+        <li>Dashboard simple : ventes récentes, chiffre du jour, article le plus vendu.</li>
+        <li>Traçabilité des opérations.</li>
+        <li>Sécuriser l'accès.</li>
+        <li>Préparer la migration Symfony.</li>
+    </ul>
+
+    <p class="small-text">
+        Technologies actuelles : PHP procédural, MySQL, HTML/CSS, jQuery. Migration Symfony prévue.
+    </p>
+</section>
+
+<section id="actors">
+    <h2>2. Acteurs du système</h2>
+
+    <h3>Administrateur</h3>
+    <ul>
+        <li>Connexion via login/mot de passe.</li>
+        <li>Gère les ventes, articles, catégories et clients.</li>
+        <li>Enregistre les commandes fournisseurs.</li>
+        <li>Consulte les statistiques.</li>
+    </ul>
+
+    <h3>Entités enregistrées</h3>
+    <ul>
+        <li><strong>Clients :</strong> informations de vente.</li>
+        <li><strong>Fournisseurs :</strong> sources d'approvisionnement.</li>
+        <li><strong>Articles :</strong> produits en stock.</li>
+    </ul>
+</section>
+
+<section id="moscow">
+    <h2>3. Priorisation MoSCoW</h2>
+    <p>Classement des fonctionnalités selon leur importance :</p>
+
+    <table>
+        <tr>
+            <th>Priorité</th>
+            <th>Fonctionnalités</th>
+        </tr>
+
+        <tr>
+            <td><strong>Must</strong></td>
+            <td>
+                <ul>
+                    <li>Authentification.</li>
+                    <li>Gestion articles, clients, fournisseurs.</li>
+                    <li>Gestion catégories.</li>
+                    <li>Enregistrement ventes et commandes.</li>
+                    <li>Dashboard.</li>
+                    <li>Historique des ventes.</li>
+                </ul>
+            </td>
+        </tr>
+
+        <tr>
+            <td><strong>Should</strong></td>
+            <td>
+                <ul>
+                    <li>Recherche ventes.</li>
+                    <li>Alerte stock faible.</li>
+                    <li>Statistiques détaillées.</li>
+                    <li>Images des articles.</li>
+                </ul>
+            </td>
+        </tr>
+
+        <tr>
+            <td><strong>Could</strong></td>
+            <td>
+                <ul>
+                    <li>Export PDF/Excel.</li>
+                    <li>Graphiques.</li>
+                    <li>Alerte email.</li>
+                    <li>Multi-entreprises.</li>
+                </ul>
+            </td>
+        </tr>
+
+        <tr>
+            <td><strong>Won't</strong></td>
+            <td>
+                <ul>
+                    <li>Paiement en ligne.</li>
+                    <li>Interface publique.</li>
+                    <li>Application mobile native.</li>
+                    <li>API publique.</li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+</section>
+
+<section id="timeline">
+    <h2>4. Timeline du projet</h2>
+    <p>Planification réaliste des étapes :</p>
+
+    <h3>S1–S2 : Analyse</h3>
+    <ul>
+        <li>Collecte des besoins.</li>
+        <li>Définition du périmètre.</li>
+        <li>MoSCoW.</li>
+        <li>Première version RGPD et conditions.</li>
+    </ul>
+
+    <h3>S3–S4 : Conception</h3>
+    <ul>
+        <li>Structure de navigation.</li>
+        <li>Formulaires CRUD.</li>
+        <li>Modélisation BDD.</li>
+    </ul>
+
+    <h3>S5–S9 : Développement</h3>
+    <ul>
+        <li>Articles, catégories.</li>
+        <li>Clients & fournisseurs.</li>
+        <li>Ventes & commandes.</li>
+        <li>Dashboard & statistiques.</li>
+    </ul>
+
+    <h3>S10–S12 : Finalisation</h3>
+    <ul>
+        <li>Tests.</li>
+        <li>Documentation.</li>
+        <li>Préparation migration Symfony.</li>
+    </ul>
+</section>
+
+<section id="features">
+    <h2>5. Fonctionnalités détaillées</h2>
+
+    <h3>Dashboard</h3>
+    <ul>
+        <li>Nombre de commandes, ventes, articles.</li>
+        <li>Chiffre d'affaires du jour.</li>
+        <li>Ventes récentes.</li>
+        <li>Article le plus vendu.</li>
+    </ul>
+
+    <h3>Ventes</h3>
+    <ul>
+        <li>Sélection article + client.</li>
+        <li>Quantité, prix, date.</li>
+        <li>Stock mis à jour.</li>
+    </ul>
+
+    <h3>Articles & catégories</h3>
+    <ul>
+        <li>Nom, catégorie, stock, prix.</li>
+        <li>Dates fabrication/expiration.</li>
+        <li>Image.</li>
+    </ul>
+
+    <h3>Clients</h3>
+    <ul>
+        <li>Nom, prénom, téléphone, adresse.</li>
+    </ul>
+
+    <h3>Fournisseurs & commandes</h3>
+    <ul>
+        <li>CRUD fournisseur.</li>
+        <li>Commandes fournisseur.</li>
+    </ul>
+
+    <h3>Sécurité</h3>
+    <ul>
+        <li>Table admin.</li>
+        <li>Formulaire connexion.</li>
+        <li>Vérification de session.</li>
+    </ul>
+</section>
+
+<section id="data">
+    <h2>6. Base de données</h2>
+
+    <h3>Tables principales</h3>
+    <ul>
+        <li><code>article(id, nom_article, id_categorie, quantite, prix_unitaire, date_fabrication, date_expiration, images)</code></li>
+        <li><code>categorie_article(id, libelle_categorie)</code></li>
+        <li><code>client(id, nom, prenom, telephone, adresse)</code></li>
+        <li><code>fournisseur(id, nom, prenom, telephone, adresse)</code></li>
+        <li><code>commande(id, id_article, id_fournisseur, quantite, prix, date_commande)</code></li>
+        <li><code>vente(id, id_article, id_client, quantite, prix, date_vente, etat)</code></li>
+    </ul>
+
+    <h3>Admin</h3>
+    <ul>
+        <li><code>admin_users(id, username, password)</code></li>
+    </ul>
+</section>
+
+<section id="risks">
+    <h2>7. Risques & sécurité</h2>
+
+    <h3>Risques</h3>
+    <ul>
+        <li>Erreurs de saisie.</li>
+        <li>Perte de données.</li>
+        <li>Accès non autorisé.</li>
+        <li>Problèmes RGPD.</li>
+    </ul>
+
+    <h3>Mesures</h3>
+    <ul>
+        <li>Accès administrateur.</li>
+        <li>Validation des formulaires.</li>
+        <li>Structure BDD propre.</li>
+    </ul>
+</section>
+
+<section id="terms">
+    <h2>8. Conditions d'utilisation</h2>
+
+    <h3>Objet</h3>
+    <p>GES_ACHIR est un outil interne de gestion de stock.</p>
+
+    <h3>Accès</h3>
+    <ul>
+        <li>Réservé aux personnes autorisées.</li>
+        <li>Identifiants strictement personnels.</li>
+    </ul>
+
+    <h3>Responsabilités</h3>
+    <ul>
+        <li>L'utilisateur est responsable des données encodées.</li>
+    </ul>
+</section>
+
+<section id="rgpd">
+    <h2>9. RGPD</h2>
+
+    <h3>Données collectées</h3>
+    <ul>
+        <li>Clients : nom, prénom, adresse, téléphone.</li>
+        <li>Fournisseurs : nom, prénom, adresse, téléphone.</li>
+        <li>Ventes et commandes.</li>
+    </ul>
+
+    <h3>Finalités</h3>
+    <ul>
+        <li>Gestion interne du stock.</li>
+        <li>Historique.</li>
+        <li>Statistiques.</li>
+    </ul>
+</section>
+<section id="cookies">
+    <h2>10. Cookies</h2>
+    <p>
+        L'application GES_ACHIR n’utilise actuellement aucun cookie fonctionnel ou statistique.
+        Toutes les informations enregistrées proviennent uniquement des données encodées par l’utilisateur.
+    </p>
+    <p>
+        Il est néanmoins possible que, dans une version future (par exemple lors de la migration vers Symfony),
+        certains cookies techniques soient utilisés pour maintenir la session de l’administrateur.
+        Ces cookies serviront uniquement au bon fonctionnement du site et pourront être désactivés via le navigateur.
+    </p>
+</section>
+
+<section id="responsabilites">
+    <h2>11. Responsabilités</h2>
+    <p>
+        L'application GES_ACHIR met à disposition des outils pour gérer les articles, clients, fournisseurs,
+        ventes et commandes. Cependant, certaines responsabilités restent à charge de l'utilisateur :
+    </p>
+    <ul>
+        <li>Vérifier l’exactitude des informations qu’il encode dans les formulaires.</li>
+        <li>Utiliser le système de manière conforme à son objectif professionnel.</li>
+        <li>Assurer la confidentialité de son identifiant et de son mot de passe.</li>
+    </ul>
+    <p>
+        Le développeur du projet ne peut être tenu responsable des erreurs liées à une mauvaise utilisation
+        du système, à des données inexactes ou à une suppression involontaire d’informations par l’utilisateur.
+    </p>
+</section>
+
+
+<section id="modifications">
+    <h2>12. Modifications des conditions</h2>
+    <p>
+        Les présentes conditions peuvent évoluer au fur et à mesure du développement du projet.
+        Toute modification importante sera indiquée dans la documentation ou dans une mise à jour du site.
+    </p>
+    <p>
+        L'utilisateur est invité à consulter régulièrement cette section afin de rester informé des éventuels changements.
+    </p>
+</section>
+
+
+
+<section id="conclusion">
+    <h2>13. Conclusion</h2>
+    <p>
+        GES_ACHIR est un projet complet : analyse, conception, base de données, développement, dashboard, RGPD. Une
+        migration future vers Symfony est prévue.
+    </p>
+</section>
+
+</body>
+</html>
