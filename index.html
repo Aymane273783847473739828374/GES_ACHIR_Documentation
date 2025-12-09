@@ -273,23 +273,57 @@
 </section>
 
 <section id="data">
-    <h2>6. Base de données</h2>
+    <h2>6. Base de données (version mise à jour)</h2>
 
-    <h3>Tables principales</h3>
+    <p>
+        Le système GES_ACHIR utilise une base de données MySQL composée de <strong>11 tables</strong>.
+        Celles-ci permettent de gérer les articles, le stock, les ventes, les clients, les commandes
+        fournisseurs et les utilisateurs administrateurs.
+    </p>
+
+    <h3>6.1 Tables principales</h3>
     <ul>
-        <li><code>article(id, nom_article, id_categorie, quantite, prix_unitaire, date_fabrication, date_expiration, images)</code></li>
-        <li><code>categorie_article(id, libelle_categorie)</code></li>
+        <li><code>article(id, nom, id_categorie, prix, quantite, date_fabrication, date_expiration, image)</code></li>
+        <li><code>categorie(id, libelle)</code></li>
         <li><code>client(id, nom, prenom, telephone, adresse)</code></li>
         <li><code>fournisseur(id, nom, prenom, telephone, adresse)</code></li>
-        <li><code>commande(id, id_article, id_fournisseur, quantite, prix, date_commande)</code></li>
-        <li><code>vente(id, id_article, id_client, quantite, prix, date_vente, etat)</code></li>
+        <li><code>user(id, username, password)</code></li>
     </ul>
 
-    <h3>Admin</h3>
+    <h3>6.2 Tables liées aux ventes</h3>
     <ul>
-        <li><code>admin_users(id, username, password)</code></li>
+        <li><code>vente(id, id_client, date_vente, total, etat)</code></li>
+        <li><code>vente_detail(id, id_vente, id_article, quantite, prix_unitaire)</code></li>
+    </ul>
+
+    <h3>6.3 Tables liées aux commandes fournisseurs</h3>
+    <ul>
+        <li><code>commande(id, id_fournisseur, date_commande, statut)</code></li>
+        <li><code>commande_detail(id, id_commande, id_article, quantite, prix_unitaire)</code></li>
+        <li><code>precommande(id, id_article, quantite, date_prevue)</code></li>
+    </ul>
+
+    <h3>6.4 Suivi et mouvements de stock</h3>
+    <ul>
+        <li><code>mouvement_stock(id, id_article, type_mouvement, quantite, date_mouvement)</code></li>
+        <!-- Exemple :
+            type_mouvement = "entrée", "sortie", "vente", "réassort"
+        -->
+    </ul>
+
+    <h3>6.5 Synthèse</h3>
+    <p>
+        Le modèle relationnel permet :
+    </p>
+    <ul>
+        <li>une gestion précise des flux de stock ;</li>
+        <li>un historique complet des ventes et commandes ;</li>
+        <li>le suivi des fournisseurs ;</li>
+        <li>la séparation articles / ventes / mouvements pour éviter les erreurs ;</li>
+        <li>la possibilité d’évoluer facilement vers un framework (ex : Symfony).</li>
     </ul>
 </section>
+
 
 <section id="risks">
     <h2>7. Risques & sécurité</h2>
@@ -396,6 +430,145 @@
         migration future vers Symfony est prévue.
     </p>
 </section>
+<section id="tests">
+    <h2>14. Tests fonctionnels (User Stories basées sur GES_ACHIR)</h2>
+
+    <p>
+        Ces tests vérifient les fonctionnalités essentielles du système GES_ACHIR : gestion du stock,
+        commandes fournisseurs, achats clients et mise à jour automatique des quantités.
+    </p>
+
+    <!-- Authentification -->
+    <h3>A. Tests liés à l’authentification</h3>
+    <ul>
+        <li><strong>Test 1 – Connexion administrateur</strong><br>
+            Objectif : Accéder au back-office.<br>
+            Résultat attendu : Accès autorisé, affichage du dashboard.</li>
+
+        <li><strong>Test 2 – Accès refusé sans session</strong><br>
+            Objectif : Empêcher l’accès direct aux pages internes.<br>
+            Résultat : Redirection vers la page de connexion.</li>
+    </ul>
+
+    <!-- Articles -->
+    <h3>B. Tests liés à la gestion du stock</h3>
+    <ul>
+        <li><strong>Test 3 – Ajouter un article au stock</strong><br>
+            Objectif : Créer un nouveau produit (nom, catégorie, prix, quantité).<br>
+            Résultat : L’article apparaît dans la liste avec la quantité exacte.</li>
+
+        <li><strong>Test 4 – Modifier un article</strong><br>
+            Objectif : Mettre à jour un prix, une quantité ou un nom.<br>
+            Résultat : Les modifications sont visibles immédiatement.</li>
+
+        <li><strong>Test 5 – Supprimer un article</strong><br>
+            Résultat : L’article disparaît du stock et n’est plus vendable.</li>
+
+        <li><strong>Test 6 – Réduction automatique du stock après une vente</strong><br>
+            Objectif : Vérifier la mise à jour en temps réel.<br>
+            Résultat : Quantité = quantité initiale – quantité vendue.</li>
+
+        <li><strong>Test 7 – Alerte stock faible</strong><br>
+            Objectif : Détecter les articles proches de rupture.<br>
+            Résultat : Icône ou message visible (ex : “Stock faible”).</li>
+
+        <li><strong>Test 8 – Recherche d’un article</strong><br>
+            Objectif : Trouver un produit via son nom.<br>
+            Résultat : Les résultats affichent uniquement les articles correspondants.</li>
+    </ul>
+
+    <!-- Fournisseurs -->
+    <h3>C. Tests liés aux commandes fournisseurs</h3>
+    <ul>
+        <li><strong>Test 9 – Ajouter un fournisseur</strong><br>
+            Résultat : Le fournisseur apparaît dans la liste.</li>
+
+        <li><strong>Test 10 – Passer une commande fournisseur</strong><br>
+            Objectif : Ajouter du stock en réapprovisionnement.<br>
+            Étapes : Sélectionner article → quantité → valider.<br>
+            Résultat : Une commande est enregistrée dans l’historique.</li>
+
+        <li><strong>Test 11 – Réception d'une commande fournisseur</strong><br>
+            Objectif : Ajouter automatiquement les quantités reçues.<br>
+            Résultat : Le stock augmente du nombre d’unités reçues.</li>
+    </ul>
+
+    <!-- Clients -->
+    <h3>D. Tests liés à la gestion des clients</h3>
+    <ul>
+        <li><strong>Test 12 – Enregistrer un client</strong><br>
+            Objectif : Ajouter les informations d’un acheteur régulier.<br>
+            Résultat : Le client apparaît dans la base.</li>
+
+        <li><strong>Test 13 – Modifier un client</strong><br>
+            Résultat : Informations mises à jour correctement.</li>
+
+        <li><strong>Test 14 – Supprimer un client</strong><br>
+            Résultat : Le client n'apparaît plus dans la liste.</li>
+    </ul>
+
+    <!-- Ventes -->
+    <h3>E. Tests liés aux ventes (client qui achète directement)</h3>
+    <ul>
+        <li><strong>Test 15 – Encodage d’une vente</strong><br>
+            Objectif : Le client achète un article en stock.<br>
+            Résultat : Vente ajoutée + stock diminué.</li>
+
+        <li><strong>Test 16 – Vente refusée si stock insuffisant</strong><br>
+            Objectif : Empêcher une vente impossible.<br>
+            Résultat : Erreur affichée, stock non modifié.</li>
+
+        <li><strong>Test 17 – Calcul automatique du montant total</strong><br>
+            Objectif : Vérifier que le prix total = prix × quantité.<br>
+            Résultat : Total correct affiché.</li>
+
+        <li><strong>Test 18 – Historique des ventes</strong><br>
+            Objectif : Voir les transactions passées.<br>
+            Résultat : Liste triée du plus récent au plus ancien.</li>
+
+        <li><strong>Test 19 – Filtrer les ventes (par date, client, article)</strong><br>
+            Résultat : Liste réduite correspondant aux filtres.</li>
+    </ul>
+
+    <!-- Dashboard -->
+    <h3>F. Dashboard & statistiques</h3>
+    <ul>
+        <li><strong>Test 20 – Affichage correct du dashboard</strong><br>
+            Objectif : Vérifier les données visibles :<br>
+            - ventes du jour<br>
+            - chiffre du jour<br>
+            - article le plus vendu<br>
+            - articles en rupture<br>
+            Résultat : Données correctes et mises à jour.</li>
+    </ul>
+
+</section>
+<section id="tests-suplementaires">
+    <h3>G. Tests supplémentaires (21 → 25)</h3>
+
+    <ul>
+        <li><strong>Test 21 – Vérification des champs obligatoires lors de l’ajout d’un article</strong><br>
+            Objectif : Empêcher la création d’un article incomplet (ex : pas de nom, pas de prix).<br>
+            Résultat attendu : Message d’erreur et ajout impossible tant que les champs ne sont pas remplis.</li>
+
+        <li><strong>Test 22 – Prévention des doublons d’articles</strong><br>
+            Objectif : Empêcher l’ajout de deux articles portant le même nom dans la même catégorie.<br>
+            Résultat attendu : Message d’erreur « Article déjà existant ».</li>
+
+        <li><strong>Test 23 – Affichage automatique de la date lors d’une vente</strong><br>
+            Objectif : Vérifier que la date de vente est générée automatiquement par le système.<br>
+            Résultat attendu : Date du jour affichée sans intervention de l’utilisateur.</li>
+
+        <li><strong>Test 24 – Mise à jour automatique du total ventes du jour</strong><br>
+            Objectif : Vérifier que le dashboard actualise le chiffre d’affaires instantanément après chaque vente.<br>
+            Résultat attendu : Le montant du jour augmente sans recharger la page.</li>
+
+        <li><strong>Test 25 – Export manuel des données (CSV ou impression)</strong><br>
+            Objectif : Vérifier que l’administrateur peut exporter ou imprimer la liste des ventes, articles ou commandes.<br>
+            Résultat attendu : Un fichier s’ouvre correctement ou la page d’impression apparaît.</li>
+    </ul>
+</section>
+
 
 </body>
 </html>
