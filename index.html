@@ -84,73 +84,205 @@
 <h1>GES_ACHIR – Système de Gestion de Stock</h1>
 <p class="small-text" style="text-align:center;">Travail de fin d'études – Développement Web</p>
 
-<section id="intro">
-    <h2>1. Présentation du projet & objectifs</h2>
+<section id="presentation-projet">
+    <h2>1. Présentation du projet et objectifs</h2>
 
     <h3>Contexte</h3>
     <p>
-        De nombreuses petites structures gèrent encore leurs stocks dans des fichiers Excel, des carnets ou de simples
-        tableaux approximatifs. Les conséquences sont fréquentes : erreurs d'inventaire, commandes mal anticipées, mauvaise
-        visibilité sur le chiffre d'affaires et perte de temps au quotidien.
-    </p>
-    <p>
-        <strong>GES_ACHIR</strong> est une application web interne dont l'objectif est de centraliser la gestion des articles,
-        des ventes, des commandes fournisseurs, des clients et des catégories dans une seule interface.
+        De nombreuses petites et moyennes structures gèrent encore leurs stocks et leurs ventes à l’aide de solutions peu
+        adaptées, telles que des fichiers Excel ou des systèmes manuels. Cette approche entraîne fréquemment des erreurs
+        d’inventaire, une mauvaise anticipation des besoins, une perte de temps significative et un manque de visibilité
+        sur l’état réel du stock et des ventes.
     </p>
 
-    <h3>Objectifs principaux</h3>
+    <p>
+        Avec l’évolution des technologies web et du commerce électronique, il devient indispensable de disposer d’un
+        système informatisé permettant de centraliser la gestion des produits, du stock, des ventes et des interactions
+        avec les clients et les fournisseurs. Une application web moderne permet d’automatiser les processus, de sécuriser
+        les données et d’améliorer l’efficacité globale de la gestion commerciale.
+    </p>
+
+    <p>
+        <strong>GES_ACHIR</strong> est un site e-commerce développé dans le cadre de ce travail de fin d’études. Ce projet
+        consiste à concevoir et réaliser une application web de gestion de stock et de vente en ligne, destinée à offrir
+        une solution centralisée, fiable et évolutive pour la gestion des activités commerciales.
+    </p>
+
+    <h3>Objectifs du projet</h3>
+    <p>
+        L’objectif principal de ce projet est de développer une plateforme e-commerce permettant de gérer efficacement
+        l’ensemble du cycle de vie des produits, depuis l’approvisionnement auprès des fournisseurs jusqu’à la vente
+        finale aux clients.
+    </p>
+
     <ul>
-        <li>Automatiser le suivi du stock.</li>
-        <li>Dashboard simple : ventes récentes, chiffre du jour, article le plus vendu.</li>
-        <li>Traçabilité des opérations.</li>
-        <li>Sécuriser l'accès.</li>
-        <li>Préparer la migration Symfony.</li>
+        <li>Centraliser la gestion des produits, du stock et des catégories.</li>
+        <li>Permettre à l’administrateur de gérer les commandes auprès des fournisseurs.</li>
+        <li>Automatiser la mise à jour du stock et l’enregistrement des mouvements.</li>
+        <li>Offrir aux clients la possibilité d’acheter des produits disponibles en ligne.</li>
+        <li>Mettre en place un système de précommande en cas de rupture de stock.</li>
+        <li>Gérer les ventes et les paiements de manière sécurisée.</li>
+        <li>Permettre aux clients de consulter l’historique de leurs achats.</li>
+        <li>Assurer la traçabilité des opérations commerciales.</li>
     </ul>
 
-    <p class="small-text">
-        Technologies actuelles : PHP procédural, MySQL, HTML/CSS, jQuery. Migration Symfony prévue.
+    <h3>Objectifs techniques</h3>
+    <p>
+        Ce travail de fin d’études vise également à mettre en pratique les compétences techniques acquises durant le
+        cursus académique, à travers l’utilisation d’outils et de technologies modernes du développement web.
     </p>
-</section>
 
-<section id="actors">
+    <ul>
+        <li>Développer l’application en utilisant le framework <strong>Symfony</strong>.</li>
+        <li>Mettre en place une architecture MVC claire et structurée.</li>
+        <li>Concevoir et exploiter une base de données relationnelle avec MySQL.</li>
+        <li>Utiliser Doctrine ORM pour la gestion des entités et des relations.</li>
+        <li>Implémenter un système d’authentification et de gestion des rôles.</li>
+        <li>Assurer la maintenabilité et l’évolutivité de l’application.</li>
+    </ul>
+
+    <h3>Technologies utilisées</h3>
+    <ul>
+        <li>Framework backend : Symfony</li>
+        <li>Langage : PHP</li>
+        <li>Base de données : MySQL</li>
+        <li>ORM : Doctrine</li>
+        <li>Frontend : HTML, CSS, JavaScript</li>
+        <li>Gestion dynamique : Twig</li>
+    </ul>
+</section>
+<section id="acteurs-systeme">
     <h2>2. Acteurs du système</h2>
 
-    <h3>Administrateur</h3>
+    <p>
+        Le système e-commerce GES_ACHIR repose sur plusieurs acteurs qui interagissent avec la plateforme
+        selon des rôles et des droits bien définis. Cette organisation permet d’assurer la sécurité du
+        système, la cohérence des données et une gestion efficace des opérations commerciales.
+    </p>
+
+    <h3>2.1 Administrateur</h3>
+    <p>
+        L’administrateur est l’acteur principal du système. Il accède à la plateforme via une authentification
+        sécurisée (login et mot de passe) et dispose de droits complets sur l’ensemble des fonctionnalités.
+    </p>
+
+    <p>
+        Les principales responsabilités de l’administrateur sont les suivantes :
+    </p>
+
     <ul>
-        <li>Connexion via login/mot de passe.</li>
-        <li>Gère les ventes, articles, catégories et clients.</li>
-        <li>Enregistre les commandes fournisseurs.</li>
-        <li>Consulte les statistiques.</li>
+        <li>Gestion des articles et des catégories (création, modification, suppression).</li>
+        <li>Gestion du stock et suivi des quantités disponibles.</li>
+        <li>Enregistrement et validation des commandes auprès des fournisseurs.</li>
+        <li>Supervision des ventes et des paiements effectués par les clients.</li>
+        <li>Gestion des comptes clients.</li>
+        <li>Consultation des statistiques et indicateurs via un tableau de bord.</li>
     </ul>
 
-    <h3>Entités enregistrées</h3>
+    <p>
+        Le système met à disposition de l’administrateur un tableau de bord permettant de visualiser
+        les chiffres clés tels que les ventes du jour, le chiffre d’affaires, les produits les plus vendus
+        et l’état général du stock. Cette fonctionnalité facilite le suivi et la prise de décision.
+    </p>
+
+    <h3>2.2 Client</h3>
+    <p>
+        Le client est l’utilisateur final du site e-commerce. Il doit disposer d’un compte afin de pouvoir
+        effectuer des achats. Une fois connecté, le client peut consulter les produits, gérer son panier
+        et finaliser ses commandes.
+    </p>
+
+    <p>
+        Le client dispose des fonctionnalités suivantes :
+    </p>
+
     <ul>
-        <li><strong>Clients :</strong> informations de vente.</li>
-        <li><strong>Fournisseurs :</strong> sources d'approvisionnement.</li>
-        <li><strong>Articles :</strong> produits en stock.</li>
+        <li>Consultation du catalogue de produits et des détails des articles.</li>
+        <li>Ajout des articles au panier avant validation de l’achat.</li>
+        <li>Gestion de son panier d’achat.</li>
+        <li>Validation de la commande par paiement.</li>
+        <li>Consultation de l’historique de ses achats.</li>
+        <li>Modification de son profil personnel.</li>
+        <li>Suppression de son compte à tout moment.</li>
+    </ul>
+
+    <p>
+        Afin d’éviter les conflits liés au stock, notamment lorsqu’il ne reste qu’un seul article,
+        le système met en place un mécanisme de réservation temporaire. Lorsqu’un client ajoute un
+        article à son panier, un minuteur est déclenché. Si l’achat n’est pas finalisé dans le temps
+        imparti, l’article est automatiquement remis en stock. Ce mécanisme permet d’éviter que
+        plusieurs clients tentent d’acheter le même produit simultanément.
+    </p>
+
+    <h3>2.3 Fournisseur</h3>
+    <p>
+        Le fournisseur intervient de manière indirecte dans le système. Il représente la source
+        d’approvisionnement des produits. Les fournisseurs ne disposent pas d’un accès à la plateforme.
+    </p>
+
+    <p>
+        Les informations relatives aux fournisseurs sont enregistrées et gérées exclusivement par
+        l’administrateur. Les commandes fournisseurs sont validées à la réception des produits, ce qui
+        entraîne la mise à jour automatique du stock.
+    </p>
+
+    <h3>2.4 Entités enregistrées dans le système</h3>
+    <p>
+        Le fonctionnement du site repose sur plusieurs entités enregistrées dans la base de données,
+        permettant d’assurer la traçabilité et la cohérence des opérations :
+    </p>
+
+    <ul>
+        <li><strong>Clients :</strong> informations personnelles et historiques des achats.</li>
+        <li><strong>Fournisseurs :</strong> données liées à l’approvisionnement.</li>
+        <li><strong>Articles :</strong> produits disponibles à la vente.</li>
+        <li><strong>Catégories :</strong> classification des produits.</li>
+        <li><strong>Commandes fournisseurs :</strong> gestion du réapprovisionnement.</li>
+        <li><strong>Ventes :</strong> transactions réalisées par les clients.</li>
+        <li><strong>Paiements :</strong> validation des ventes.</li>
+        <li><strong>Paniers :</strong> réservation temporaire des articles.</li>
+        <li><strong>Mouvements de stock :</strong> entrées, sorties et retours.</li>
     </ul>
 </section>
 
-<section id="moscow">
-    <h2>3. Priorisation MoSCoW</h2>
-    <p>Classement des fonctionnalités selon leur importance :</p>
 
-    <table>
+<section id="moscow">
+    <h2>3. Priorisation des fonctionnalités – Méthode MoSCoW</h2>
+
+    <p>
+        Afin d’organiser le développement du projet et de définir les priorités, la méthode
+        <strong>MoSCoW</strong> a été utilisée. Cette méthode permet de classer les fonctionnalités
+        selon leur importance et leur impact sur le bon fonctionnement du système.
+    </p>
+
+    <p>
+        Les fonctionnalités sont réparties en quatre catégories : <em>Must</em>, <em>Should</em>,
+        <em>Could</em> et <em>Won’t</em>. Cette priorisation permet de se concentrer en priorité
+        sur les éléments indispensables au fonctionnement du site e-commerce.
+    </p>
+
+    <table border="1" cellpadding="8" cellspacing="0" width="100%">
+        <thead>
         <tr>
             <th>Priorité</th>
             <th>Fonctionnalités</th>
         </tr>
-
+        </thead>
+        <tbody>
         <tr>
             <td><strong>Must</strong></td>
             <td>
                 <ul>
-                    <li>Authentification.</li>
-                    <li>Gestion articles, clients, fournisseurs.</li>
-                    <li>Gestion catégories.</li>
-                    <li>Enregistrement ventes et commandes.</li>
-                    <li>Dashboard.</li>
-                    <li>Historique des ventes.</li>
+                    <li>Authentification sécurisée (administrateur et client).</li>
+                    <li>Gestion des articles, catégories et fournisseurs.</li>
+                    <li>Gestion des comptes clients.</li>
+                    <li>Gestion du stock et mise à jour automatique.</li>
+                    <li>Ajout des articles au panier.</li>
+                    <li>Réservation temporaire des articles via un timer.</li>
+                    <li>Validation des ventes après paiement.</li>
+                    <li>Enregistrement des ventes et des commandes fournisseurs.</li>
+                    <li>Tableau de bord administrateur.</li>
+                    <li>Historique des ventes et des achats clients.</li>
                 </ul>
             </td>
         </tr>
@@ -159,10 +291,12 @@
             <td><strong>Should</strong></td>
             <td>
                 <ul>
-                    <li>Recherche ventes.</li>
-                    <li>Alerte stock faible.</li>
-                    <li>Statistiques détaillées.</li>
-                    <li>Images des articles.</li>
+                    <li>Recherche et filtrage des ventes.</li>
+                    <li>Alerte de stock faible.</li>
+                    <li>Statistiques détaillées (ventes, produits les plus vendus).</li>
+                    <li>Gestion des images des articles.</li>
+                    <li>Modification du profil client.</li>
+                    <li>Suppression du compte client.</li>
                 </ul>
             </td>
         </tr>
@@ -171,403 +305,703 @@
             <td><strong>Could</strong></td>
             <td>
                 <ul>
-                    <li>Export PDF/Excel.</li>
-                    <li>Graphiques.</li>
-                    <li>Alerte email.</li>
-                    <li>Multi-entreprises.</li>
+                    <li>Export des données (PDF, Excel).</li>
+                    <li>Graphiques avancés sur le tableau de bord.</li>
+                    <li>Alertes automatiques par email.</li>
+                    <li>Gestion multi-boutiques ou multi-entreprises.</li>
                 </ul>
             </td>
         </tr>
 
         <tr>
-            <td><strong>Won't</strong></td>
+            <td><strong>Won’t</strong></td>
             <td>
                 <ul>
-                    <li>Paiement en ligne.</li>
-                    <li>Interface publique.</li>
+                    <li>Accès direct des fournisseurs à la plateforme.</li>
                     <li>Application mobile native.</li>
                     <li>API publique.</li>
+                    <li>Fonctionnalités hors du cadre du TFE.</li>
                 </ul>
             </td>
         </tr>
+        </tbody>
     </table>
+
+    <p>
+        Cette priorisation permet de garantir que les fonctionnalités essentielles sont développées
+        en priorité, tout en laissant la possibilité d’ajouter des améliorations dans des versions
+        futures du système.
+    </p>
 </section>
 
-<section id="timeline">
+
+<section id="timeline-projet">
     <h2>4. Timeline du projet</h2>
-    <p>Planification réaliste des étapes :</p>
 
-    <h3>S1–S2 : Analyse</h3>
+    <p>
+        Afin de mener à bien la réalisation du projet GES_ACHIR, une planification progressive et réaliste
+        a été mise en place. Cette organisation permet d’aborder chaque étape du projet de manière structurée,
+        tout en laissant suffisamment de temps pour l’analyse, le développement, les tests et les ajustements
+        nécessaires.
+    </p>
+
+    <p>
+        Le projet a été découpé en plusieurs phases logiques, chacune correspondant à des objectifs précis.
+        Cette approche facilite le suivi de l’avancement et permet de garantir la qualité du travail réalisé.
+    </p>
+
+    <h3>Phase 1 : Analyse et préparation</h3>
     <ul>
-        <li>Collecte des besoins.</li>
-        <li>Définition du périmètre.</li>
-        <li>MoSCoW.</li>
-        <li>Première version RGPD et conditions.</li>
+        <li>Analyse du contexte et compréhension du besoin.</li>
+        <li>Identification des acteurs du système.</li>
+        <li>Définition du périmètre fonctionnel du projet.</li>
+        <li>Priorisation des fonctionnalités à l’aide de la méthode MoSCoW.</li>
+        <li>Première réflexion sur les aspects juridiques (RGPD, protection des données).</li>
     </ul>
 
-    <h3>S3–S4 : Conception</h3>
+    <h3>Phase 2 : Conception</h3>
     <ul>
-        <li>Structure de navigation.</li>
-        <li>Formulaires CRUD.</li>
-        <li>Modélisation BDD.</li>
+        <li>Conception de la structure générale de l’application.</li>
+        <li>Définition de l’architecture du projet sous Symfony.</li>
+        <li>Modélisation de la base de données.</li>
+        <li>Définition des relations entre les différentes entités.</li>
+        <li>Conception des interfaces principales (client et administration).</li>
     </ul>
 
-    <h3>S5–S9 : Développement</h3>
+    <h3>Phase 3 : Développement</h3>
     <ul>
-        <li>Articles, catégories.</li>
-        <li>Clients & fournisseurs.</li>
-        <li>Ventes & commandes.</li>
-        <li>Dashboard & statistiques.</li>
+        <li>Mise en place du projet Symfony et de son environnement.</li>
+        <li>Développement de l’authentification et de la gestion des rôles.</li>
+        <li>Développement de la gestion des articles, catégories et fournisseurs.</li>
+        <li>Implémentation de la gestion du stock et des mouvements.</li>
+        <li>Développement du panier avec réservation temporaire des articles.</li>
+        <li>Gestion des ventes, des paiements et des précommandes.</li>
+        <li>Mise en place du tableau de bord et des statistiques.</li>
     </ul>
 
-    <h3>S10–S12 : Finalisation</h3>
+    <h3>Phase 4 : Tests et ajustements</h3>
     <ul>
-        <li>Tests.</li>
-        <li>Documentation.</li>
-        <li>Préparation migration Symfony.</li>
+        <li>Tests fonctionnels des principales fonctionnalités.</li>
+        <li>Vérification de la cohérence des données (stock, ventes, paiements).</li>
+        <li>Correction des bugs identifiés.</li>
+        <li>Amélioration de l’ergonomie et de l’expérience utilisateur.</li>
     </ul>
+
+    <h3>Phase 5 : Finalisation</h3>
+    <ul>
+        <li>Stabilisation de l’application.</li>
+        <li>Rédaction de la documentation du projet.</li>
+        <li>Préparation du projet pour la présentation finale.</li>
+        <li>Analyse des perspectives d’évolution futures.</li>
+    </ul>
+
+    <p>
+        Cette organisation permet de disposer d’un temps suffisant pour chaque phase du projet, tout en
+        garantissant un développement progressif et maîtrisé. Elle reflète une approche réaliste et adaptée
+        à un travail de fin d’études de grande envergure.
+    </p>
 </section>
 
-<section id="features">
+
+<section id="fonctionnalites-detaillees">
     <h2>5. Fonctionnalités détaillées</h2>
 
-    <h3>Dashboard</h3>
-    <ul>
-        <li>Nombre de commandes, ventes, articles.</li>
-        <li>Chiffre d'affaires du jour.</li>
-        <li>Ventes récentes.</li>
-        <li>Article le plus vendu.</li>
-    </ul>
-
-    <h3>Ventes</h3>
-    <ul>
-        <li>Sélection article + client.</li>
-        <li>Quantité, prix, date.</li>
-        <li>Stock mis à jour.</li>
-    </ul>
-
-    <h3>Articles & catégories</h3>
-    <ul>
-        <li>Nom, catégorie, stock, prix.</li>
-        <li>Dates fabrication/expiration.</li>
-        <li>Image.</li>
-    </ul>
-
-    <h3>Clients</h3>
-    <ul>
-        <li>Nom, prénom, téléphone, adresse.</li>
-    </ul>
-
-    <h3>Fournisseurs & commandes</h3>
-    <ul>
-        <li>CRUD fournisseur.</li>
-        <li>Commandes fournisseur.</li>
-    </ul>
-
-    <h3>Sécurité</h3>
-    <ul>
-        <li>Table admin.</li>
-        <li>Formulaire connexion.</li>
-        <li>Vérification de session.</li>
-    </ul>
-</section>
-
-<section id="data">
-    <h2>6. Base de données (version mise à jour)</h2>
-
     <p>
-        Le système GES_ACHIR utilise une base de données MySQL composée de <strong>11 tables</strong>.
-        Celles-ci permettent de gérer les articles, le stock, les ventes, les clients, les commandes
-        fournisseurs et les utilisateurs administrateurs.
+        Cette section présente les fonctionnalités principales du système GES_ACHIR. L’objectif est de décrire de manière
+        claire le comportement de chaque module (administration et espace client) ainsi que les règles de gestion mises
+        en place, notamment sur la sécurité, la cohérence du stock et la traçabilité des opérations.
     </p>
 
-    <h3>6.1 Tables principales</h3>
-    <ul>
-        <li><code>article(id, nom, id_categorie, prix, quantite, date_fabrication, date_expiration, image)</code></li>
-        <li><code>categorie(id, libelle)</code></li>
-        <li><code>client(id, nom, prenom, telephone, adresse)</code></li>
-        <li><code>fournisseur(id, nom, prenom, telephone, adresse)</code></li>
-        <li><code>user(id, username, password)</code></li>
-    </ul>
-
-    <h3>6.2 Tables liées aux ventes</h3>
-    <ul>
-        <li><code>vente(id, id_client, date_vente, total, etat)</code></li>
-        <li><code>vente_detail(id, id_vente, id_article, quantite, prix_unitaire)</code></li>
-    </ul>
-
-    <h3>6.3 Tables liées aux commandes fournisseurs</h3>
-    <ul>
-        <li><code>commande(id, id_fournisseur, date_commande, statut)</code></li>
-        <li><code>commande_detail(id, id_commande, id_article, quantite, prix_unitaire)</code></li>
-        <li><code>precommande(id, id_article, quantite, date_prevue)</code></li>
-    </ul>
-
-    <h3>6.4 Suivi et mouvements de stock</h3>
-    <ul>
-        <li><code>mouvement_stock(id, id_article, type_mouvement, quantite, date_mouvement)</code></li>
-        <!-- Exemple :
-            type_mouvement = "entrée", "sortie", "vente", "réassort"
-        -->
-    </ul>
-
-    <h3>6.5 Synthèse</h3>
+    <h3>5.1 Dashboard (Administrateur)</h3>
     <p>
-        Le modèle relationnel permet :
+        Le tableau de bord est accessible uniquement par l’administrateur. Il permet d’avoir une vue globale, rapide et
+        à jour de l’activité du site. Les statistiques sont mises à jour en temps réel : dès qu’une vente, un paiement,
+        une mise à jour de stock ou une opération importante est effectuée, les indicateurs reflètent immédiatement ce
+        changement.
     </p>
+
+    <p>Le dashboard affiche notamment :</p>
     <ul>
-        <li>une gestion précise des flux de stock ;</li>
-        <li>un historique complet des ventes et commandes ;</li>
-        <li>le suivi des fournisseurs ;</li>
-        <li>la séparation articles / ventes / mouvements pour éviter les erreurs ;</li>
-        <li>la possibilité d’évoluer facilement vers un framework (ex : Symfony).</li>
+        <li>Le nombre total de ventes enregistrées.</li>
+        <li>Le nombre de ventes réalisées sur la journée.</li>
+        <li>Le chiffre d’affaires total.</li>
+        <li>Le chiffre d’affaires du jour.</li>
+        <li>Les ventes récentes avec le détail complet (client, date, montant, articles achetés).</li>
+        <li>L’article le plus vendu sur une période donnée (par exemple sur la semaine).</li>
+        <li>Un espace de statistiques permettant de consulter des données synthétiques et utiles à la décision.</li>
     </ul>
+
+    <h3>5.2 Ventes</h3>
+    <p>
+        Le module de vente représente le cœur du système côté client. Une vente est créée automatiquement dès que le
+        paiement est validé. Cela garantit que les ventes enregistrées correspondent uniquement à des transactions
+        réellement finalisées.
+    </p>
+
+    <p>La vente respecte les règles suivantes :</p>
+    <ul>
+        <li>Une vente peut contenir plusieurs articles (panier multi-articles).</li>
+        <li>Le prix de l’article est fixe (prix du produit au moment de l’achat, sans modification manuelle).</li>
+        <li>La date de vente est générée automatiquement.</li>
+        <li>Le stock est mis à jour immédiatement après validation de la vente.</li>
+        <li>Les détails de la vente sont enregistrés (articles achetés, quantités, prix, client, etc.).</li>
+    </ul>
+
+    <h3>5.3 Panier et réservation temporaire (timer)</h3>
+    <p>
+        Afin d’éviter qu’un même article soit acheté simultanément par deux clients (notamment lorsqu’il ne reste qu’une
+        seule unité en stock), le système met en place une réservation temporaire liée au panier. Lorsqu’un client ajoute
+        un article au panier, un minuteur démarre automatiquement.
+    </p>
+
+    <p>
+        Si le client ne finalise pas son achat dans le délai prévu, l’article est libéré et revient automatiquement au stock.
+        Ce mécanisme permet d’assurer une meilleure cohérence du stock et d’éviter les conflits lors des achats en simultané.
+    </p>
+
+    <h3>5.4 Articles et catégories</h3>
+    <p>
+        Le module “Articles & catégories” permet à l’administrateur de gérer le catalogue du site. Chaque article appartient
+        à une seule catégorie. Pour chaque article, plusieurs informations sont enregistrées afin d’assurer une gestion
+        complète et structurée.
+    </p>
+
+    <p>Les informations principales d’un article sont :</p>
+    <ul>
+        <li>Nom de l’article, catégorie, prix, stock disponible.</li>
+        <li>Image principale du produit (une image par article).</li>
+        <li>Date de fabrication (optionnelle).</li>
+        <li>Date d’expiration (optionnelle).</li>
+    </ul>
+
+    <p>
+        Le système permet également à l’administrateur de désactiver un article ou une catégorie sans les supprimer.
+        Cette option est utile par exemple lorsqu’un produit est en rupture de stock, n’est plus vendu temporairement,
+        ou lorsqu’une catégorie doit être cachée sans perdre son historique.
+    </p>
+
+    <h3>5.5 Clients</h3>
+    <p>
+        Les clients disposent d’un espace utilisateur basé sur un compte personnel. L’inscription se fait via un formulaire
+        dédié (nom, prénom, téléphone, email, mot de passe, etc.). Une fois inscrit et connecté, le client peut effectuer
+        des achats et gérer ses informations personnelles.
+    </p>
+
+    <p>Les fonctionnalités principales côté client :</p>
+    <ul>
+        <li>Création de compte et connexion.</li>
+        <li>Modification du profil (nom, prénom, téléphone, mot de passe).</li>
+        <li>Suppression du compte à tout moment.</li>
+        <li>Consultation de l’historique des ventes liées à son compte.</li>
+    </ul>
+
+    <p>
+        En cas de suppression du compte, l’historique des ventes est conservé dans le système pour des raisons de traçabilité
+        et de cohérence des données (statistiques, historique administratif, suivi d’activité).
+    </p>
+
+    <h3>5.6 Fournisseurs et commandes fournisseurs</h3>
+    <p>
+        Le module “Fournisseurs & commandes fournisseurs” est géré exclusivement par l’administrateur. Il permet de suivre
+        l’approvisionnement des produits et d’assurer un réapprovisionnement structuré du stock.
+    </p>
+
+    <p>Caractéristiques principales :</p>
+    <ul>
+        <li>Gestion complète des fournisseurs (CRUD : création, modification, suppression, consultation).</li>
+        <li>Création de commandes fournisseurs pouvant contenir plusieurs articles.</li>
+        <li>Historique complet des commandes fournisseurs conservé dans le système.</li>
+        <li>Le stock est mis à jour uniquement lorsque la commande fournisseur est validée à réception.</li>
+    </ul>
+
+    <h3>5.7 Sécurité</h3>
+    <p>
+        Le système est développé avec Symfony et s’appuie sur un mécanisme de sécurité structuré afin de protéger les données
+        et les fonctionnalités sensibles. Deux rôles principaux sont définis : administrateur et client. Les pages
+        d’administration sont protégées et inaccessibles aux utilisateurs non autorisés.
+    </p>
+
+    <p>Les principales mesures de sécurité prévues :</p>
+    <ul>
+        <li>Authentification et gestion des rôles (administrateur / client).</li>
+        <li>Contrôle d’accès aux pages (protection contre l’accès direct via URL).</li>
+        <li>Mots de passe hashés (algorithmes sécurisés).</li>
+        <li>Protection contre les injections SQL (utilisation ORM/Doctrine et requêtes sécurisées).</li>
+        <li>Protection contre les attaques XSS (validation et échappement des données).</li>
+        <li>Gestion des sessions : un utilisateur doit se reconnecter après déconnexion.</li>
+    </ul>
+
+    <p>
+        L’ensemble de ces mesures a pour objectif d’assurer la confidentialité des données, la stabilité de l’application
+        et la fiabilité des opérations effectuées par les utilisateurs.
+    </p>
 </section>
 
 
-<section id="risks">
-    <h2>7. Risques & sécurité</h2>
+<section id="base-donnees-detail">
+    <h2>6. Base de données – Description détaillée</h2>
+
+    <p>
+        La base de données du projet GES_ACHIR a été conçue pour gérer efficacement les produits, le stock,
+        les ventes, les clients et les fournisseurs. Chaque table a un rôle précis et permet de stocker
+        des informations bien définies afin d’assurer la cohérence et la traçabilité des données.
+    </p>
+
+    <h3>6.1 Table <code>categorie</code></h3>
+    <p>
+        La table <strong>categorie</strong> permet de classer les articles. Elle contient le nom de chaque
+        catégorie (par exemple : électronique, alimentaire, vêtements, etc.). Une catégorie peut contenir
+        plusieurs articles, ce qui facilite l’organisation et la recherche des produits sur le site.
+    </p>
+
+    <h3>6.2 Table <code>article</code></h3>
+    <p>
+        La table <strong>article</strong> contient toutes les informations concernant les produits vendus
+        sur le site. Chaque article est lié à une seule catégorie. On y trouve le nom de l’article, son prix,
+        la quantité disponible en stock, ainsi qu’une image pour l’affichage sur le site.
+    </p>
+
+    <p>
+        Les champs de date de fabrication et de date d’expiration sont optionnels. Ils peuvent être utilisés
+        pour certains types de produits, mais ne sont pas obligatoires. Cette table est au centre du système,
+        car elle est liée aux ventes, aux commandes fournisseurs et aux mouvements de stock.
+    </p>
+
+    <h3>6.3 Table <code>client</code></h3>
+    <p>
+        La table <strong>client</strong> stocke les informations personnelles des clients du site, telles que
+        le nom, le prénom, le numéro de téléphone et l’adresse. Chaque client est lié à un compte utilisateur,
+        ce qui lui permet de se connecter, d’effectuer des achats et de consulter l’historique de ses ventes.
+    </p>
+
+    <p>
+        Un client peut réaliser plusieurs ventes. Même si un client supprime son compte, les informations
+        liées aux ventes restent conservées pour assurer la cohérence des statistiques et de l’historique.
+    </p>
+
+    <h3>6.4 Table <code>user</code></h3>
+    <p>
+        La table <strong>user</strong> gère l’authentification des utilisateurs du système. Elle contient
+        les informations nécessaires à la connexion, telles que le nom d’utilisateur ou l’adresse email,
+        le mot de passe (stocké de manière sécurisée) et le rôle de l’utilisateur.
+    </p>
+
+    <p>
+        Deux rôles principaux sont utilisés : administrateur et client. Cette table permet de sécuriser
+        l’accès aux différentes parties du site et d’empêcher les utilisateurs non autorisés d’accéder
+        aux pages sensibles.
+    </p>
+
+    <h3>6.5 Table <code>fournisseur</code></h3>
+    <p>
+        La table <strong>fournisseur</strong> contient les informations des fournisseurs qui approvisionnent
+        le stock. Elle stocke le nom, le prénom, le numéro de téléphone et l’adresse du fournisseur.
+    </p>
+
+    <p>
+        Les fournisseurs n’ont pas d’accès direct au site. Toutes les interactions avec les fournisseurs
+        sont gérées par l’administrateur, notamment lors de la création et de la validation des commandes
+        fournisseurs.
+    </p>
+
+    <h3>6.6 Table <code>commande</code></h3>
+    <p>
+        La table <strong>commande</strong> représente une commande passée auprès d’un fournisseur. Elle
+        contient la date de la commande ainsi que son statut (par exemple : en attente ou validée).
+    </p>
+
+    <p>
+        Le stock n’est mis à jour que lorsque la commande est validée, c’est-à-dire lorsque les produits
+        sont effectivement reçus. Cela permet d’éviter les erreurs de stock.
+    </p>
+
+    <h3>6.7 Table <code>commande_detail</code></h3>
+    <p>
+        La table <strong>commande_detail</strong> permet de détailler les articles inclus dans une commande
+        fournisseur. Une commande peut contenir plusieurs articles, chacun avec une quantité et un prix
+        unitaire.
+    </p>
+
+    <p>
+        Cette table permet de garder un historique précis de ce qui a été commandé auprès des fournisseurs.
+    </p>
+
+    <h3>6.8 Table <code>vente</code></h3>
+    <p>
+        La table <strong>vente</strong> représente une vente réalisée par un client. Elle contient la date
+        de la vente, le client concerné, le montant total et l’état de la vente.
+    </p>
+
+    <p>
+        Une vente est créée automatiquement après la validation du paiement. Cette règle garantit que seules
+        les ventes réellement payées sont enregistrées dans le système.
+    </p>
+
+    <h3>6.9 Table <code>vente_detail</code></h3>
+    <p>
+        La table <strong>vente_detail</strong> permet de détailler les articles contenus dans une vente.
+        Chaque ligne correspond à un article vendu, avec sa quantité et son prix unitaire.
+    </p>
+
+    <p>
+        Cette table permet de gérer facilement les ventes contenant plusieurs articles et d’avoir un
+        historique détaillé des achats.
+    </p>
+
+    <h3>6.10 Table <code>precommande</code></h3>
+    <p>
+        La table <strong>precommande</strong> est utilisée lorsque le stock d’un article est insuffisant.
+        Elle permet d’enregistrer les précommandes effectuées par les clients, avec la quantité demandée
+        et une date prévue de disponibilité.
+    </p>
+
+    <p>
+        Les précommandes permettent d’anticiper les besoins et d’améliorer la gestion du réapprovisionnement.
+    </p>
+
+    <h3>6.11 Table <code>mouvement_stock</code></h3>
+    <p>
+        La table <strong>mouvement_stock</strong> enregistre tous les changements liés au stock. Chaque
+        mouvement correspond à une entrée, une sortie, un retour ou une réservation temporaire.
+    </p>
+
+    <p>
+        Cette table permet de conserver un historique complet des mouvements de stock et de comprendre
+        facilement l’origine de chaque variation de quantité.
+    </p>
+
+    <h3>6.12 Conclusion sur la base de données</h3>
+    <p>
+        La base de données est organisée de manière claire et logique. Chaque table a un rôle précis
+        et les relations entre les tables permettent d’assurer une gestion fiable du stock, des ventes
+        et des commandes. Cette conception facilite la maintenance du système et son évolution future,
+        notamment avec l’utilisation de Symfony et de Doctrine ORM.
+    </p>
+</section>
+
+
+
+<section id="risques-securite">
+    <h2>7. Risques et sécurité</h2>
 
     <h3>Risques</h3>
     <ul>
-        <li>Erreurs de saisie.</li>
-        <li>Perte de données.</li>
-        <li>Accès non autorisé.</li>
-        <li>Problèmes RGPD.</li>
+        <li>Erreurs de saisie lors de l’encodage des données.</li>
+        <li>Perte ou incohérence de données.</li>
+        <li>Accès non autorisé aux informations sensibles.</li>
+        <li>Non-respect des règles liées à la protection des données.</li>
     </ul>
 
-    <h3>Mesures</h3>
+    <h3>Mesures de sécurité</h3>
     <ul>
-        <li>Accès administrateur.</li>
+        <li>Accès sécurisé par authentification.</li>
+        <li>Gestion des rôles (administrateur / client).</li>
         <li>Validation des formulaires.</li>
-        <li>Structure BDD propre.</li>
+        <li>Protection contre les attaques courantes (SQL, XSS).</li>
     </ul>
 </section>
 
-<section id="terms">
-    <h2>8. Conditions d'utilisation</h2>
 
-    <h3>Objet</h3>
-    <p>GES_ACHIR est un outil interne de gestion de stock.</p>
+<section id="protection-donnees">
+    <h2>8. Protection des données</h2>
 
-    <h3>Accès</h3>
-    <ul>
-        <li>Réservé aux personnes autorisées.</li>
-        <li>Identifiants strictement personnels.</li>
-    </ul>
+    <p>
+        Le système GES_ACHIR accorde une importance particulière à la protection des données personnelles.
+        Les informations enregistrées sont limitées à celles nécessaires au bon fonctionnement du site.
+    </p>
 
-    <h3>Responsabilités</h3>
-    <ul>
-        <li>L'utilisateur est responsable des données encodées.</li>
-    </ul>
+    <p>
+        Les données sont protégées par des mécanismes de sécurité tels que le hachage des mots de passe
+        et la restriction des accès selon les rôles.
+    </p>
 </section>
+
 
 <section id="rgpd">
     <h2>9. RGPD</h2>
 
-    <h3>Données collectées</h3>
-    <ul>
-        <li>Clients : nom, prénom, adresse, téléphone.</li>
-        <li>Fournisseurs : nom, prénom, adresse, téléphone.</li>
-        <li>Ventes et commandes.</li>
-    </ul>
+    <p>
+        Le projet GES_ACHIR respecte les principes du Règlement Général sur la Protection des Données (RGPD).
+        Les données collectées concernent uniquement les utilisateurs, les clients, les fournisseurs
+        ainsi que les informations liées aux ventes et aux commandes.
+    </p>
 
-    <h3>Finalités</h3>
-    <ul>
-        <li>Gestion interne du stock.</li>
-        <li>Historique.</li>
-        <li>Statistiques.</li>
-    </ul>
+    <p>
+        Les utilisateurs disposent d’un droit d’accès, de modification et de suppression de leurs données,
+        dans les limites nécessaires à la conservation de l’historique des opérations.
+    </p>
 </section>
+
+
 <section id="cookies">
     <h2>10. Cookies</h2>
+
     <p>
-        L'application GES_ACHIR n’utilise actuellement aucun cookie fonctionnel ou statistique.
-        Toutes les informations enregistrées proviennent uniquement des données encodées par l’utilisateur.
-    </p>
-    <p>
-        Il est néanmoins possible que, dans une version future (par exemple lors de la migration vers Symfony),
-        certains cookies techniques soient utilisés pour maintenir la session de l’administrateur.
-        Ces cookies serviront uniquement au bon fonctionnement du site et pourront être désactivés via le navigateur.
+        L’application GES_ACHIR n’utilise pas de cookies à des fins publicitaires ou statistiques.
+        Seuls des cookies techniques peuvent être utilisés pour gérer la session utilisateur
+        et assurer le bon fonctionnement du site.
     </p>
 </section>
+
+
+<section id="conditions-utilisation">
+    <h2>11. Conditions d’utilisation</h2>
+
+    <p>
+        GES_ACHIR est un outil de gestion de stock et de ventes développé dans un cadre académique.
+        L’accès au système est réservé aux utilisateurs disposant d’un compte.
+    </p>
+
+    <ul>
+        <li>Les identifiants sont strictement personnels.</li>
+        <li>L’utilisation du système doit respecter son objectif.</li>
+        <li>Toute utilisation abusive est interdite.</li>
+    </ul>
+</section>
+
 
 <section id="responsabilites">
-    <h2>11. Responsabilités</h2>
+    <h2>12. Responsabilités</h2>
+
     <p>
-        L'application GES_ACHIR met à disposition des outils pour gérer les articles, clients, fournisseurs,
-        ventes et commandes. Cependant, certaines responsabilités restent à charge de l'utilisateur :
+        L’utilisateur est responsable des informations qu’il encode dans le système ainsi que de la
+        confidentialité de ses identifiants.
     </p>
-    <ul>
-        <li>Vérifier l’exactitude des informations qu’il encode dans les formulaires.</li>
-        <li>Utiliser le système de manière conforme à son objectif professionnel.</li>
-        <li>Assurer la confidentialité de son identifiant et de son mot de passe.</li>
-    </ul>
+
     <p>
-        Le développeur du projet ne peut être tenu responsable des erreurs liées à une mauvaise utilisation
-        du système, à des données inexactes ou à une suppression involontaire d’informations par l’utilisateur.
+        Le développeur ne peut être tenu responsable des erreurs liées à une mauvaise utilisation
+        du système ou à des données incorrectes saisies par l’utilisateur.
     </p>
 </section>
 
 
-<section id="modifications">
-    <h2>12. Modifications des conditions</h2>
+<section id="modifications-conditions">
+    <h2>13. Modifications des conditions</h2>
+
     <p>
-        Les présentes conditions peuvent évoluer au fur et à mesure du développement du projet.
-        Toute modification importante sera indiquée dans la documentation ou dans une mise à jour du site.
-    </p>
-    <p>
-        L'utilisateur est invité à consulter régulièrement cette section afin de rester informé des éventuels changements.
+        Les présentes conditions peuvent évoluer en fonction du développement du projet.
+        Toute modification importante sera indiquée dans la documentation ou lors d’une mise à jour.
     </p>
 </section>
-
 
 
 <section id="conclusion">
-    <h2>13. Conclusion</h2>
-    <p>
-        GES_ACHIR est un projet complet : analyse, conception, base de données, développement, dashboard, RGPD. Une
-        migration future vers Symfony est prévue.
-    </p>
-</section>
-<section id="tests">
-    <h2>14. Tests fonctionnels (User Stories basées sur GES_ACHIR)</h2>
+    <h2>14. Conclusion</h2>
 
     <p>
-        Ces tests vérifient les fonctionnalités essentielles du système GES_ACHIR : gestion du stock,
-        commandes fournisseurs, achats clients et mise à jour automatique des quantités.
+        Le projet GES_ACHIR a permis de concevoir et de développer un système complet de gestion de stock
+        et de ventes dans le cadre d’un travail de fin d’études. Il intègre l’analyse des besoins,
+        la conception de la base de données, le développement des fonctionnalités principales
+        ainsi que la prise en compte des aspects de sécurité et de protection des données.
     </p>
 
-    <!-- Authentification -->
-    <h3>A. Tests liés à l’authentification</h3>
-    <ul>
-        <li><strong>Test 1 – Connexion administrateur</strong><br>
-            Objectif : Accéder au back-office.<br>
-            Résultat attendu : Accès autorisé, affichage du dashboard.</li>
+    <p>
+        L’application offre une gestion centralisée des articles, des ventes, des fournisseurs
+        et du stock, tout en proposant des statistiques en temps réel et un mécanisme de réservation
+        des articles via le panier.
+    </p>
 
-        <li><strong>Test 2 – Accès refusé sans session</strong><br>
-            Objectif : Empêcher l’accès direct aux pages internes.<br>
-            Résultat : Redirection vers la page de connexion.</li>
-    </ul>
-
-    <!-- Articles -->
-    <h3>B. Tests liés à la gestion du stock</h3>
-    <ul>
-        <li><strong>Test 3 – Ajouter un article au stock</strong><br>
-            Objectif : Créer un nouveau produit (nom, catégorie, prix, quantité).<br>
-            Résultat : L’article apparaît dans la liste avec la quantité exacte.</li>
-
-        <li><strong>Test 4 – Modifier un article</strong><br>
-            Objectif : Mettre à jour un prix, une quantité ou un nom.<br>
-            Résultat : Les modifications sont visibles immédiatement.</li>
-
-        <li><strong>Test 5 – Supprimer un article</strong><br>
-            Résultat : L’article disparaît du stock et n’est plus vendable.</li>
-
-        <li><strong>Test 6 – Réduction automatique du stock après une vente</strong><br>
-            Objectif : Vérifier la mise à jour en temps réel.<br>
-            Résultat : Quantité = quantité initiale – quantité vendue.</li>
-
-        <li><strong>Test 7 – Alerte stock faible</strong><br>
-            Objectif : Détecter les articles proches de rupture.<br>
-            Résultat : Icône ou message visible (ex : “Stock faible”).</li>
-
-        <li><strong>Test 8 – Recherche d’un article</strong><br>
-            Objectif : Trouver un produit via son nom.<br>
-            Résultat : Les résultats affichent uniquement les articles correspondants.</li>
-    </ul>
-
-    <!-- Fournisseurs -->
-    <h3>C. Tests liés aux commandes fournisseurs</h3>
-    <ul>
-        <li><strong>Test 9 – Ajouter un fournisseur</strong><br>
-            Résultat : Le fournisseur apparaît dans la liste.</li>
-
-        <li><strong>Test 10 – Passer une commande fournisseur</strong><br>
-            Objectif : Ajouter du stock en réapprovisionnement.<br>
-            Étapes : Sélectionner article → quantité → valider.<br>
-            Résultat : Une commande est enregistrée dans l’historique.</li>
-
-        <li><strong>Test 11 – Réception d'une commande fournisseur</strong><br>
-            Objectif : Ajouter automatiquement les quantités reçues.<br>
-            Résultat : Le stock augmente du nombre d’unités reçues.</li>
-    </ul>
-
-    <!-- Clients -->
-    <h3>D. Tests liés à la gestion des clients</h3>
-    <ul>
-        <li><strong>Test 12 – Enregistrer un client</strong><br>
-            Objectif : Ajouter les informations d’un acheteur régulier.<br>
-            Résultat : Le client apparaît dans la base.</li>
-
-        <li><strong>Test 13 – Modifier un client</strong><br>
-            Résultat : Informations mises à jour correctement.</li>
-
-        <li><strong>Test 14 – Supprimer un client</strong><br>
-            Résultat : Le client n'apparaît plus dans la liste.</li>
-    </ul>
-
-    <!-- Ventes -->
-    <h3>E. Tests liés aux ventes (client qui achète directement)</h3>
-    <ul>
-        <li><strong>Test 15 – Encodage d’une vente</strong><br>
-            Objectif : Le client achète un article en stock.<br>
-            Résultat : Vente ajoutée + stock diminué.</li>
-
-        <li><strong>Test 16 – Vente refusée si stock insuffisant</strong><br>
-            Objectif : Empêcher une vente impossible.<br>
-            Résultat : Erreur affichée, stock non modifié.</li>
-
-        <li><strong>Test 17 – Calcul automatique du montant total</strong><br>
-            Objectif : Vérifier que le prix total = prix × quantité.<br>
-            Résultat : Total correct affiché.</li>
-
-        <li><strong>Test 18 – Historique des ventes</strong><br>
-            Objectif : Voir les transactions passées.<br>
-            Résultat : Liste triée du plus récent au plus ancien.</li>
-
-        <li><strong>Test 19 – Filtrer les ventes (par date, client, article)</strong><br>
-            Résultat : Liste réduite correspondant aux filtres.</li>
-    </ul>
-
-    <!-- Dashboard -->
-    <h3>F. Dashboard & statistiques</h3>
-    <ul>
-        <li><strong>Test 20 – Affichage correct du dashboard</strong><br>
-            Objectif : Vérifier les données visibles :<br>
-            - ventes du jour<br>
-            - chiffre du jour<br>
-            - article le plus vendu<br>
-            - articles en rupture<br>
-            Résultat : Données correctes et mises à jour.</li>
-    </ul>
-
+    <p>
+        Ce projet constitue une base solide et évolutive, pouvant être améliorée à l’avenir,
+        notamment par l’ajout de nouvelles fonctionnalités et l’optimisation de l’architecture
+        sous Symfony.
+    </p>
 </section>
-<section id="tests-suplementaires">
-    <h3>G. Tests supplémentaires (21 → 25)</h3>
+
+
+<section id="tests-fonctionnels">
+    <h2>14. Tests fonctionnels</h2>
+
+    <p>
+        Cette section présente les tests fonctionnels réalisés afin de vérifier le bon fonctionnement
+        du système GES_ACHIR. Les tests portent sur la gestion du stock, les ventes, les commandes fournisseurs,
+        le panier, le dashboard et la sécurité. Chaque test correspond à un scénario réel d’utilisation
+        du système.
+    </p>
+
+    <h3>A. Tests liés à la gestion des utilisateurs</h3>
 
     <ul>
-        <li><strong>Test 21 – Vérification des champs obligatoires lors de l’ajout d’un article</strong><br>
-            Objectif : Empêcher la création d’un article incomplet (ex : pas de nom, pas de prix).<br>
-            Résultat attendu : Message d’erreur et ajout impossible tant que les champs ne sont pas remplis.</li>
+        <li>
+            <strong>Test 1 – Création d’un compte client</strong><br>
+            Objectif : Vérifier qu’un client peut créer un compte avec des informations valides.<br>
+            Résultat attendu : Compte créé et enregistré en base de données.
+        </li>
 
-        <li><strong>Test 22 – Prévention des doublons d’articles</strong><br>
-            Objectif : Empêcher l’ajout de deux articles portant le même nom dans la même catégorie.<br>
-            Résultat attendu : Message d’erreur « Article déjà existant ».</li>
+        <li>
+            <strong>Test 2 – Modification du profil client</strong><br>
+            Objectif : Modifier le nom, le téléphone ou le mot de passe du client.<br>
+            Résultat attendu : Données mises à jour immédiatement.
+        </li>
 
-        <li><strong>Test 23 – Affichage automatique de la date lors d’une vente</strong><br>
-            Objectif : Vérifier que la date de vente est générée automatiquement par le système.<br>
-            Résultat attendu : Date du jour affichée sans intervention de l’utilisateur.</li>
+        <li>
+            <strong>Test 3 – Suppression d’un compte client</strong><br>
+            Objectif : Vérifier la suppression du compte sans supprimer l’historique des ventes.<br>
+            Résultat attendu : Compte désactivé, ventes conservées.
+        </li>
+    </ul>
 
-        <li><strong>Test 24 – Mise à jour automatique du total ventes du jour</strong><br>
-            Objectif : Vérifier que le dashboard actualise le chiffre d’affaires instantanément après chaque vente.<br>
-            Résultat attendu : Le montant du jour augmente sans recharger la page.</li>
+    <h3>B. Tests liés aux articles et catégories</h3>
 
-        <li><strong>Test 25 – Export manuel des données (CSV ou impression)</strong><br>
-            Objectif : Vérifier que l’administrateur peut exporter ou imprimer la liste des ventes, articles ou commandes.<br>
-            Résultat attendu : Un fichier s’ouvre correctement ou la page d’impression apparaît.</li>
+    <ul>
+        <li>
+            <strong>Test 4 – Ajout d’un article</strong><br>
+            Objectif : Créer un nouvel article avec nom, catégorie, prix et stock.<br>
+            Résultat attendu : Article visible dans la liste avec les bonnes valeurs.
+        </li>
+
+        <li>
+            <strong>Test 5 – Modification d’un article</strong><br>
+            Objectif : Modifier le prix ou le stock d’un article existant.<br>
+            Résultat attendu : Modification visible immédiatement.
+        </li>
+
+        <li>
+            <strong>Test 6 – Désactivation d’un article</strong><br>
+            Objectif : Rendre un article non visible sans le supprimer.<br>
+            Résultat attendu : Article indisponible à l’achat mais conservé en base.
+        </li>
+
+        <li>
+            <strong>Test 7 – Prévention des doublons d’articles</strong><br>
+            Objectif : Empêcher la création de deux articles identiques dans une même catégorie.<br>
+            Résultat attendu : Message d’erreur affiché.
+        </li>
+    </ul>
+
+    <h3>C. Tests liés au stock</h3>
+
+    <ul>
+        <li>
+            <strong>Test 8 – Mise à jour du stock après vente</strong><br>
+            Objectif : Vérifier la diminution automatique du stock après une vente.<br>
+            Résultat attendu : Quantité mise à jour correctement.
+        </li>
+
+        <li>
+            <strong>Test 9 – Vente refusée si stock insuffisant</strong><br>
+            Objectif : Empêcher la vente si la quantité demandée dépasse le stock.<br>
+            Résultat attendu : Message d’erreur, stock inchangé.
+        </li>
+
+        <li>
+            <strong>Test 10 – Alerte stock faible</strong><br>
+            Objectif : Détecter les articles proches de la rupture.<br>
+            Résultat attendu : Indication visible dans l’administration.
+        </li>
+    </ul>
+
+    <h3>D. Tests liés au panier</h3>
+
+    <ul>
+        <li>
+            <strong>Test 11 – Ajout d’un article au panier</strong><br>
+            Objectif : Ajouter un article disponible au panier.<br>
+            Résultat attendu : Article réservé temporairement.
+        </li>
+
+        <li>
+            <strong>Test 12 – Expiration du panier (timer)</strong><br>
+            Objectif : Libérer l’article si le paiement n’est pas effectué à temps.<br>
+            Résultat attendu : Article remis en stock automatiquement.
+        </li>
+
+        <li>
+            <strong>Test 13 – Panier multi-articles</strong><br>
+            Objectif : Ajouter plusieurs articles au panier.<br>
+            Résultat attendu : Tous les articles sont pris en compte.
+        </li>
+    </ul>
+
+    <h3>E. Tests liés aux ventes</h3>
+
+    <ul>
+        <li>
+            <strong>Test 14 – Création automatique d’une vente après paiement</strong><br>
+            Objectif : Vérifier que la vente est créée uniquement après paiement.<br>
+            Résultat attendu : Vente enregistrée avec succès.
+        </li>
+
+        <li>
+            <strong>Test 15 – Calcul automatique du montant total</strong><br>
+            Objectif : Vérifier que le total = somme des prix × quantités.<br>
+            Résultat attendu : Montant correct affiché.
+        </li>
+
+        <li>
+            <strong>Test 16 – Historique des ventes</strong><br>
+            Objectif : Consulter les ventes passées.<br>
+            Résultat attendu : Liste triée du plus récent au plus ancien.
+        </li>
+
+        <li>
+            <strong>Test 17 – Filtrage des ventes</strong><br>
+            Objectif : Filtrer les ventes par date ou client.<br>
+            Résultat attendu : Résultats correspondant aux critères.
+        </li>
+    </ul>
+
+    <h3>F. Tests liés aux fournisseurs</h3>
+
+    <ul>
+        <li>
+            <strong>Test 18 – Création d’une commande fournisseur</strong><br>
+            Objectif : Commander plusieurs articles auprès d’un fournisseur.<br>
+            Résultat attendu : Commande enregistrée avec ses détails.
+        </li>
+
+        <li>
+            <strong>Test 19 – Validation d’une commande fournisseur</strong><br>
+            Objectif : Valider la commande après réception.<br>
+            Résultat attendu : Stock augmenté automatiquement.
+        </li>
+    </ul>
+
+    <h3>G. Dashboard et statistiques</h3>
+
+    <ul>
+        <li>
+            <strong>Test 20 – Affichage des ventes du jour</strong><br>
+            Objectif : Vérifier l’exactitude des ventes journalières.<br>
+            Résultat attendu : Données correctes et à jour.
+        </li>
+
+        <li>
+            <strong>Test 21 – Mise à jour en temps réel du chiffre d’affaires</strong><br>
+            Objectif : Vérifier l’actualisation immédiate après une vente.<br>
+            Résultat attendu : Chiffre mis à jour sans rechargement.
+        </li>
+
+        <li>
+            <strong>Test 22 – Article le plus vendu</strong><br>
+            Objectif : Identifier l’article le plus vendu sur une période.<br>
+            Résultat attendu : Article correct affiché.
+        </li>
+    </ul>
+
+    <h3>H. Tests de sécurité et fiabilité</h3>
+
+    <ul>
+        <li>
+            <strong>Test 23 – Accès interdit aux pages admin sans rôle</strong><br>
+            Objectif : Bloquer l’accès aux pages sensibles.<br>
+            Résultat attendu : Redirection ou refus d’accès.
+        </li>
+
+        <li>
+            <strong>Test 24 – Protection contre les champs vides</strong><br>
+            Objectif : Empêcher l’enregistrement de données incomplètes.<br>
+            Résultat attendu : Message d’erreur affiché.
+        </li>
+
+        <li>
+            <strong>Test 25 – Export des données</strong><br>
+            Objectif : Exporter ou imprimer les ventes ou articles.<br>
+            Résultat attendu : Fichier généré ou page d’impression affichée.
+        </li>
     </ul>
 </section>
+
 
 
 </body>
